@@ -19,15 +19,19 @@ public class Employee {
     @Column(name = "email_id")
     private String emailId;
 
+    @Column(name = "gender")
+    private String gender;
+
     public Employee(){
 
     }
 
-    public Employee(long id, String firstName, String lastName, String emailId) {
+    public Employee(long id, String firstName, String lastName, String emailId, String gender) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailId = emailId;
+        this.gender = gender;
     }
 
     public long getId() {
@@ -60,5 +64,13 @@ public class Employee {
 
     public void setEmailId(String emailId) {
         this.emailId = emailId;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }
