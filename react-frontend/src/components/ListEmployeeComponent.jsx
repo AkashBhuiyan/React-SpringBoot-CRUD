@@ -10,6 +10,11 @@ class ListEmployeeComponent extends Component {
       employees: []
     }
     this.addEmployee = this.addEmployee.bind(this);
+    this.editEmployee = this.editEmployee.bind(this);
+  }
+
+  editEmployee(id){
+    this.props.history.push(`/add-employee/${id}`)
   }
   
   componentDidMount(){
@@ -19,7 +24,7 @@ class ListEmployeeComponent extends Component {
   }
 
   addEmployee(){
-    this.props.history.push('/add-employee')
+    this.props.history.push('/add-employee/-1')
   }
 
   render() {
@@ -28,16 +33,16 @@ class ListEmployeeComponent extends Component {
         
         <h2 className="text-center">Employees List</h2>
         <div className="row">
-          <button className="btn btn-danger" onClick={this.addEmployee}>Add Employee</button>
+          <button className="btn btn-success" onClick={this.addEmployee}>Add Employee</button>
         </div>
         
         <div className="row">
           <table className="table table-striped table-bordered">
             <thead>
               <tr>
-                <th>Employee First Name</th>
-                <th>Employee Last Name</th>
-                <th>Employee Email Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email Id</th>
                 <th>Gender</th>
                 <th>Actions</th>
               </tr>
@@ -52,6 +57,10 @@ class ListEmployeeComponent extends Component {
                     <td>{employee.lastName}</td>
                     <td>{employee.emailId}</td>
                     <td>{employee.gender}</td>
+                    <td>
+                      <button onClick={()=> this.editEmployee(employee.id)} className="btn btn-info">Update</button>
+                      <button  className="btn btn-danger">Delete</button>
+                    </td>
                   </tr>
                 )
               }
